@@ -48,11 +48,12 @@ CREATE TABLE categorias (
 CREATE TABLE clientes (
     id_cliente INT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
-    email VARCHAR(100),
+    email VARCHAR(100) UNIQUE,
     ciudad VARCHAR(50),
     fecha_registro DATE NOT NULL
-);
 
+ );
+  
 
 /* ---------- PRODUCTOS ---------- */
 
@@ -61,13 +62,14 @@ CREATE TABLE productos (
     nombre_producto VARCHAR(100) NOT NULL,
     id_categoria INT NOT NULL,
     precio DECIMAL(10,2) NOT NULL,
-    stock INT NOT NULL,
-    activo BIT NOT NULL,
+    stock INT NOT NULL DEFAULT 0,
+    activo BIT NOT NULL DEFAULT 1,
 
     CONSTRAINT FK_productos_categorias
         FOREIGN KEY (id_categoria)
         REFERENCES categorias(id_categoria)
 );
+
 
 
 /* ---------- VENTAS ---------- */
