@@ -60,3 +60,6 @@ ORDER BY mes;
 
 -- Hallazgo 3: Los 5 clientes son recurrentes, con 2 pedidos cada uno.
 -- El cliente 4 registró el mayor gasto total, con $1.165.000.
+
+-- Hallazgo 4: Abril y julio tuvieron una facturación por encima del promedio mensual,
+-- mientras que mayo y junio quedaron por debajo.
