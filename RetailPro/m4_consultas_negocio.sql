@@ -1,29 +1,29 @@
 USE Ventas_Tech_DB;
 GO
 
-
-SELECT MONTH(fecha_venta) AS mes,
-SUM(cantidad * precio_unitario) AS total_facturado,
-COUNT(id_venta) AS cantidad_pedidos,
-AVG(precio_unitario * cantidad) AS ticket_promedio
+SELECT 
+    MONTH(fecha_venta) AS mes,
+    SUM(cantidad * precio_unitario) AS total_facturado,
+    COUNT(id_venta) AS cantidad_pedidos,
+    AVG(precio_unitario * cantidad) AS ticket_promedio
 FROM ventas
 GROUP BY MONTH(fecha_venta);
 
 SELECT TOP 5 
-id_producto AS producto,  
-SUM (cantidad) AS unidades_vendidas,  
-SUM(cantidad * precio_unitario) AS total_facturado 
+    id_producto AS producto,  
+    SUM(cantidad) AS unidades_vendidas,  
+    SUM(cantidad * precio_unitario) AS total_facturado 
 FROM ventas 
 GROUP BY id_producto 
-ORDER BY total_facturado DESC ;
+ORDER BY total_facturado DESC;
 
 SELECT 
-id_cliente AS cliente,
-COUNT (id_venta) AS cantidad_pedidos,
-SUM (precio_unitario * cantidad) AS total_gastado
+    id_cliente AS cliente,
+    COUNT(id_venta) AS cantidad_pedidos,
+    SUM(precio_unitario * cantidad) AS total_gastado
 FROM ventas
 GROUP BY id_cliente 
-HAVING COUNT (id_venta) >1;
+HAVING COUNT(id_venta) > 1;
 
 SELECT
     mes,
