@@ -43,16 +43,16 @@ INNER JOIN categorias c
 WHERE v.id_venta IS NULL;
 
 
-/* Como mi esquema no incluye una columna CANAL, utilicé el PERIODO como criterio de origen.
-   La columna PERIODO se genera como valor literal en cada SELECT, manteniendo la lógica solicitada en la consigna.
+/* Como el esquema no incluye una columna de canal, se crea CANAL como campo literal.
+   Sus valores representan dos períodos de ventas, criterio permitido por la consigna.
 */
  
- SELECT periodo, SUM(venta_total) AS total
- FROM (
+SELECT canal, SUM(venta_total) AS total
+FROM (
 		SELECT 
 			fecha_venta, 
 			cantidad * precio_unitario AS venta_total, 
-			'Primer Semestre' AS periodo
+			'Primer Semestre' AS canal
 		FROM ventas
 		WHERE fecha_venta BETWEEN '2026-01-01' AND '2026-06-30'
 		 
@@ -61,8 +61,8 @@ WHERE v.id_venta IS NULL;
 		SELECT 
 			fecha_venta, 
 			cantidad * precio_unitario AS venta_total, 
-			'Segundo Semestre' AS periodo
+			'Segundo Semestre' AS canal
 		FROM ventas
 		WHERE fecha_venta BETWEEN '2026-07-01' AND '2026-12-31'
 ) AS ventas_por_periodo
-GROUP BY periodo;
+GROUP BY canal;
