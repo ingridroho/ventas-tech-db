@@ -1,3 +1,12 @@
+## Entrega M6 - Pipeline ETL
+
+La entrega del módulo 6 se encuentra en la carpeta:
+
+👉 [M6_Pipeline_ETL](./M6_Pipeline_ETL)
+
+Incluye el archivo `.pbix` de Power BI y el dataset fuente `.xlsx`.
+
+
 # Data Analytics - Proyectos y entregas
 
 Repositorio de trabajos prácticos y proyectos desarrollados durante mi formación en Data Analytics.
